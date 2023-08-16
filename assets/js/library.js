@@ -29,9 +29,16 @@ class Book {
       this.setTableRow();
     }
   }
-  static setTableRow() {}
+  static setTableRow() {
+    LIST_OF_BOOK.forEach((data) => {
+      $("#table-book tbody").append(
+        `<tr><td>${data.title}</td><td>${data.author}</td><td>${
+          data.year
+        }</td><td>${data.category ? data.category : "-"}</td></tr>`
+      );
+    });
+  }
 }
-
 class BiografiBook extends Book {
   constructor(title, author, year) {
     super(title, author, year);
@@ -47,7 +54,6 @@ class NovelBook extends Book {
     super(title, author, year);
   }
 }
-
 const novel_1 = new NovelBook("Rindu", "Tere Liye", "2009");
 LIST_OF_BOOK.push(novel_1);
 
